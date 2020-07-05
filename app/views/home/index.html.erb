@@ -1,0 +1,42 @@
+<% if user_signed_in? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Date Taken</th>
+        <th>Total Paid</th>
+        <th>Debt Balance</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @debtors.each do |debtor| %>
+        <tr>
+          <td><%= link_to debtor.name, debtor %></td>
+          <td><%#= debtor.amount %></td>
+          <td><%#= debtor.date.strftime("%B %d, %Y") %></td>
+          <td><%#= debtor.totalpayments %></td>
+          <td><%#= debtor.amount - debtor.totalpayments %></td>
+          <td><%#= debtor.balance%></td>
+          <!-- <td><%= link_to 'Show', debtor %></td> -->
+          <td><%= link_to 'Edit', edit_debtor_path(debtor) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+<% else %>
+
+<h3>
+  Do you have various debts to manage and Want to keep Track? </h3>
+<h4>
+  Use this easy tool to help you manage ur debt &amp; repayments
+</h4>
+<%= link_to 'Sign Up Now', new_user_registration_path %>
+
+<% end %>
+

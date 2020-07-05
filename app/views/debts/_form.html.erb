@@ -1,0 +1,37 @@
+<%= form_with(model: debt, local: true) do |f| %>
+  <% if debt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(debt.errors.count, "error") %> prohibited this debt from being saved:</h2>
+
+      <ul>
+        <% debt.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :debtor_id %>
+    <%= f.collection_select :debtor_id, Debtor.where(:user_id => current_user.id), :id, :name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.number_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= f.label :reason %>
+    <%= f.text_area :reason %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date %>
+    <%= f.date_select :date %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

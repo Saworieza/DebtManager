@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Debtors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @debtors.each do |debtor| %>
+      <tr>
+        <td><%= debtor.name %></td>
+        <td><%= debtor.number %></td>
+        <td><%= debtor.user_id %></td>
+        <td><%= link_to 'Show', debtor %></td>
+        <td><%= link_to 'Edit', edit_debtor_path(debtor) %></td>
+        <td><%= link_to 'Destroy', debtor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Debtor', new_debtor_path %>

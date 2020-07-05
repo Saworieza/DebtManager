@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Debts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Reason</th>
+      <th>User</th>
+      <th>Debtor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @debts.each do |debt| %>
+      <tr>
+        <td><%= debt.amount %></td>
+        <td><%= debt.date %></td>
+        <td><%= debt.reason %></td>
+        <td><%= debt.user_id %></td>
+        <td><%= debt.debtor_id %></td>
+        <td><%= link_to 'Show', debt %></td>
+        <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
+        <td><%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Debt', new_debt_path %>

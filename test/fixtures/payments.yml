@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  method: MyString
+  debt: one
+  debtor: one
+  user: one
+
+two:
+  amount: 1
+  method: MyString
+  debt: two
+  debtor: two
+  user: two

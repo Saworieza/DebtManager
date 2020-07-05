@@ -1,0 +1,55 @@
+<%= form_for(payment) do |f| %>
+  <% if payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+      <ul>
+      <% payment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :Debtor %>
+    <%= f.collection_select :debtor_id, Debtor.where(:user_id => current_user.id), :id, :name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Debt %>
+    <%#= f.collection_select :debt_id, Debt.where(:user_id => current_user.id), :id, :reason %>
+
+    <%= f.grouped_collection_select :debt_id, Debtor.order(:name), :debts, :name, :id, :reason, include_blank: true %>
+    <%#= f.grouped_collection_select :state_id, Country.order(:name), :states, :name, :id, :name, include_blank: true %>
+    <%#= f.grouped_collection_select :whatYouNeedToSelect_id, ParentModel.order(:name), :controller of what you selecting, :field from parent model, :id, :fiel you are selecting, include_blank: true %>
+
+
+
+  </div>
+
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.number_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= f.label :method %>
+    <%= f.text_field :method %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date %>
+    <%= f.date_select :date %>
+  </div>
+
+<!--   <div class="field">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </div>
+ -->
+
+  <div class="actions">
+    <%= f.submit 'Make Payment' %>
+  </div>
+<% end %>

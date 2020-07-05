@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+
+  <strong>Name:</strong>
+  <%= @debtor.name %> <%= @debtor.number %>
+<br>
+
+
+<h3>Debts</h3>
+<% @debtor.debts.each do |debt| %>
+	<%= link_to debt.amount, debt %>
+	<%= debt.reason %>
+	<%= debt.date %> <br>
+	<b>Debts Paid <%= debt.payments.count %></b><br>
+	<% debt.payments.each do |payment| %>
+		<%= payment.amount %>
+		<%= payment.method %>
+		<%= payment.date  %>
+		<br>
+	<% end %>
+	<br>
+	Total Paid 
+<% end %>
+
+<h3>Payments</h3>
+	<% @debtor.payments.each do |payment| %>
+		<%#= payment.project.name %>
+		Ksh <%= payment.amount %>
+		<%= payment.date %>
+		<%= payment.method %><br>
+	<% end %>
+	<br>
+	Total Payments : <%#= @debtor.totalpayments %><br>
+	Debt Balance : <%#= @debtor.amount - @debtor.totalpayments %>
+
+
+<br>
+<br>
+<%= link_to 'Edit', edit_debtor_path(@debtor) %> |
+<%= link_to 'Delete', @debtor, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', debtors_path %> 
+

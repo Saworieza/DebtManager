@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  date: 2020-07-05
+  reason: MyText
+  user: one
+  debtor: one
+
+two:
+  amount: 1
+  date: 2020-07-05
+  reason: MyText
+  user: two
+  debtor: two

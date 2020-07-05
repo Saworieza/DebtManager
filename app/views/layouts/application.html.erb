@@ -10,6 +10,29 @@
   </head>
 
   <body>
+    <nav>
+        <%= link_to 'Home', root_path %> | 
+      <% if user_signed_in? %>
+        <%= link_to 'Debtors', debtors_path %> |
+        <%= link_to 'Debt', debts_path %> |
+        <%= link_to 'Payments', payments_path %> | 
+        <%= link_to 'Make Payment', new_payment_path %>
+        <% if user_signed_in? %>
+          logged in as: <%= link_to current_user.username, edit_user_registration_path %>
+          <%= link_to "Log out", destroy_user_session_path, :method => 'delete' %>
+        <% end %>
+      </nav>
+
+      <h1>Debtors</h1>
+      Total Debt : <%#= @totaldebt %>
+      Total Payments Made : <%#= @totalpaymentsmade  %> <br>
+      <%= link_to 'New Debt', new_debt_path %> | <%= link_to 'Make Payment', new_payment_path %>
+    <% end %>
+
+    <div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
     <%= yield %>
   </body>
 </html>

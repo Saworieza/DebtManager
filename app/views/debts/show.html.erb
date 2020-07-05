@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Debtor:</strong>
+  <%= @debt.debtor.name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @debt.amount %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @debt.reason %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @debt.date %>
+</p>
+
+Total Paid Debts <%= @debt.payments.count %><br>
+
+<% @debt.payments.each do |payment| %>
+  <%= payment.amount %>
+  <%= payment.method %>
+  <%= payment.date %>
+  <br>
+<% end %>
+
+<br>
+<%= link_to 'Edit', edit_debt_path(@debt) %> |
+<%= link_to 'Back', debts_path %>
